@@ -1,0 +1,83 @@
+<UserControl x:Class="FitnessTrainerPlatform.Views.TrainerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <TabControl>
+        <TabItem Header="Tutelage Requests">
+            <Grid Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="RequestsGrid" AutoGenerateColumns="False" IsReadOnly="True"
+                          SelectionMode="Single" Margin="0,0,0,8">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="User" Binding="{Binding UserName}" Width="*"/>
+                        <DataGridTextColumn Header="Goals" Binding="{Binding Goals}" Width="2*"/>
+                        <DataGridTextColumn Header="Health" Binding="{Binding Health}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button Content="View Wish Sheet" Click="ViewWishSheet_Click"/>
+                    <Button Content="Accept" Margin="8,0,0,0" Click="AcceptRequest_Click"/>
+                    <Button Content="Deny" Style="{StaticResource SecondaryButton}" Margin="8,0,0,0" Click="DenyRequest_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="My Exercises">
+            <Grid Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListBox x:Name="ExercisesList" DisplayMemberPath="Display"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,8,0,0">
+                    <Button Content="Add Exercise" Click="AddExercise_Click"/>
+                    <Button Content="Play Video Info" Style="{StaticResource SecondaryButton}" Margin="8,0,0,0" Click="ShowExercise_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Assign Training">
+            <Grid Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Active tutelage:" Foreground="#65676B"/>
+                <ComboBox x:Name="TutelageCombo" Grid.Row="1" Margin="0,4,0,12" DisplayMemberPath="Display"/>
+                <TextBlock Grid.Row="2" Text="Training title:" Foreground="#65676B"/>
+                <StackPanel Grid.Row="3">
+                    <TextBox x:Name="TrainingTitleBox" Margin="0,4,0,8"/>
+                    <TextBlock Text="Select exercises (reusable library):" Foreground="#65676B"/>
+                    <ListBox x:Name="ExercisePicker" SelectionMode="Multiple" Height="150" DisplayMemberPath="Name"/>
+                    <Button Content="Create Training" HorizontalAlignment="Left" Margin="0,8,0,0" Click="CreateTraining_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Active Tutelages &amp; Chat">
+            <Grid Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListBox x:Name="ActiveTutelagesList" DisplayMemberPath="Display"/>
+                <Button Grid.Row="1" Content="Open Chat" Margin="0,8,0,0" Click="OpenChat_Click"/>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Account &amp; Fees">
+            <StackPanel Margin="16">
+                <TextBlock x:Name="ApprovalStatusText" FontWeight="Bold" FontSize="16"/>
+                <TextBlock x:Name="FeeStatusText" Margin="0,8,0,16" TextWrapping="Wrap"/>
+                <Button Content="Pay Monthly Platform Fee ($19.99)" Click="PayFee_Click" HorizontalAlignment="Left"/>
+                <TextBlock Margin="0,16,0,0" Foreground="#65676B" TextWrapping="Wrap"
+                           Text="Note: Platform fee is separate from tutelage fees. Fee does not auto-renew."/>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</UserControl>

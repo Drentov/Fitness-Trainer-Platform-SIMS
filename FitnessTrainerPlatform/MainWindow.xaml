@@ -1,0 +1,30 @@
+﻿<Window x:Class="FitnessTrainerPlatform.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FitTrain Platform"
+        Height="720" Width="1100"
+        MinHeight="600" MinWidth="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource PageBackground}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" Padding="16,12" BorderBrush="#E4E6EB" BorderThickness="0,0,0,1">
+            <Grid>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="FitTrain" FontSize="22" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"/>
+                    <TextBlock x:Name="RoleLabel" Margin="16,0,0,0" VerticalAlignment="Center" Foreground="#65676B"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock x:Name="UserLabel" VerticalAlignment="Center" Margin="0,0,16,0" Foreground="#050505"/>
+                    <Button Content="Log Out" Style="{StaticResource SecondaryButton}" Click="Logout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ContentControl x:Name="MainContent" Grid.Row="1" Margin="16"/>
+    </Grid>
+</Window>
